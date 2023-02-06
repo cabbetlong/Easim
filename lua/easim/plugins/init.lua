@@ -1,3 +1,6 @@
 require("easim.core").init()
 
-return {}
+return {
+  { "folke/lazy.nvim" },
+  { "LazyVim/LazyVim", priority = 10000, lazy = false, config = true },
+}

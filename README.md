@@ -1,2 +1,2 @@
 # Easim
-> An Easy Use git push -u origin main
+My personal Neovim setup powerd by [lazy.nvim](https://github.com/folke/lazy.nvim)
