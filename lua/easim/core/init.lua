@@ -12,8 +12,21 @@ local options
 function M.setup(opts)
   options = vim.tbl_deep_extend("force", defaults, opts or {})
 
-  vim.opt.background = options.theme.background
-  vim.cmd.colorscheme(options.theme.colorscheme)
+  require("lazy.core.util").try(function()
+    if type(M.colorscheme) == "function" then
+      M.colorscheme()
+    else
+      vim.opt.background = "dark"
+      vim.cmd.colorscheme(M.colorscheme)
+    end
+  end, {
+    msg = "Could not load your colorscheme",
+    on_error = function(msg)
+      require("lazy.core.util").error(msg)
+      vim.opt.background = "dark"
+      vim.cmd.colorscheme("habamax")
+    end,
+  })
 end
 
 M.did_init = false
