@@ -1,13 +1,19 @@
 local M = {}
 
-local defaults = {}
+local defaults = {
+  theme = {
+    colorscheme = "gruvbox",
+    background = "dark",
+  },
+}
 
 local options
 
 function M.setup(opts)
   options = vim.tbl_deep_extend("force", defaults, opts or {})
 
-  vim.pretty_print(options)
+  vim.opt.background = options.theme.background
+  vim.cmd.colorscheme(options.theme.colorscheme)
 end
 
 M.did_init = false

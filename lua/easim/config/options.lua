@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 vim.opt.mouse = "a"
--- vim.opt.clipboard = "unnamedplus"
 
 vim.opt.laststatus = 3
 
@@ -33,7 +32,6 @@ vim.opt.history = 999
 vim.opt.timeoutlen = 400
 vim.opt.updatetime = 400
 vim.opt.list = true
--- opt.listchars:append("eol:↴")
 vim.opt.autoread = true
 vim.opt.termguicolors = true
 vim.opt.shortmess:append("W")
