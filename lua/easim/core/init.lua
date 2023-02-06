@@ -16,7 +16,7 @@ function M.setup(opts)
     if type(M.theme) == "function" then
       M.theme()
     else
-      vim.opt.background = "dark"
+      vim.opt.background = M.theme.background
       vim.cmd.colorscheme(M.theme.colorscheme)
     end
   end, {
