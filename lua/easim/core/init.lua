@@ -12,6 +12,18 @@ local options
 function M.setup(opts)
   options = vim.tbl_deep_extend("force", defaults, opts or {})
 
+  if vim.fn.argc(-1) == 0 then
+    vim.api.nvim_create_autocmd("User", {
+      group = vim.api.nvim_create_augroup("Easim", { clear = true }),
+      pattern = "VeryLazy",
+      callback = function()
+        require("easim.config.autocmds")
+      end,
+    })
+  else
+    require("easim.config.autocmds")
+  end
+
   require("lazy.core.util").try(function()
     if type(M.theme) == "function" then
       M.theme()
