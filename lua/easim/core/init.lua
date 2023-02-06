@@ -17,7 +17,7 @@ function M.setup(opts)
       M.theme()
     else
       vim.opt.background = "dark"
-      vim.cmd.colorscheme(M.theme)
+      vim.cmd.colorscheme(M.theme.colorscheme)
     end
   end, {
     msg = "Could not load your colorscheme",
