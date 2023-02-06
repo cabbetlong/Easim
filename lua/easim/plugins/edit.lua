@@ -1,16 +1,5 @@
 return {
   {
-    "max397574/better-escape.nvim",
-    event = "VeryLazy",
-    opts = {
-      mapping = { "jj" },
-      timeout = vim.o.timeoutlen,
-      keys = "<Esc>",
-    },
-    config = true,
-  },
-
-  {
     "windwp/nvim-autopairs",
     event = "VeryLazy",
     config = function()
