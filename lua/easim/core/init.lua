@@ -14,7 +14,7 @@ M.did_init = false
 function M.init()
   if not M.did_init then
     M.did_init = true
-    require("easim.config").load("options")
+    -- require("easim.config").load("options")
   end
 end
 
