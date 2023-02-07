@@ -124,18 +124,25 @@ return {
 | (____/\| )   ( |/\____) |___) (___| )   ( |
 (_______/|/     \|\_______)\_______/|/     \|
       ]],
+
+      buttons = {
+        { "l", "鈴 Lazy", ":Lazy<CR>" },
+        { "s", "  Restore Session", ":RestoreSession<CR>" },
+        { "c", "  Config", ":e $MYVIMRC <CR>" },
+        { "q", "  Quit", ":qa<CR>" },
+      },
     },
     config = function(_, opts)
       local dashboard = require("alpha.themes.dashboard")
 
       local logo = opts.logo
       dashboard.section.header.val = vim.split(logo, "\n")
-      dashboard.section.buttons.val = {
-        dashboard.button("l", "鈴" .. " Lazy", ":Lazy<CR>"),
-        dashboard.button("s", " " .. " Restore Session", ":RestoreSession<CR>"),
-        dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-        dashboard.button("q", " " .. " Quit", ":qa<CR>"),
-      }
+
+      local buttons = {}
+      for _, button in ipairs(opts.buttons) do
+        vim.list_extend(buttons, { dashboard.button(button[1], button[2], button[3]) })
+      end
+      dashboard.section.buttons.val = buttons
       dashboard.opts.layout[1].val = 8
       vim.b.miniindentscope_disable = true
 
@@ -152,7 +159,7 @@ return {
 
       require("alpha").setup(dashboard.opts)
       vim.api.nvim_create_autocmd("User", {
-        pattern = "EasimStarted",
+        pattern = "LazyVimStarted",
         callback = function()
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
