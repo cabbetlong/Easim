@@ -1,5 +1,4 @@
 return {
-
   { "numToStr/Comment.nvim", event = "VeryLazy", config = true },
 
   {
@@ -19,7 +18,6 @@ return {
         end,
       },
     },
-
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
