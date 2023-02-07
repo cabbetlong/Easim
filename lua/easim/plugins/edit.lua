@@ -24,12 +24,13 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
-    config = {
+    opts = {
       char = "│",
       filetype_exclude = { "help", "alpha", "dashboard", "NvimTree", "Trouble", "lazy" },
       show_trailing_blankline_indent = false,
       show_current_context = false,
     },
+    config = true,
   },
 
   {
@@ -66,6 +67,40 @@ return {
   {
     "nacro90/numb.nvim",
     event = "VeryLazy",
+    config = true,
+  },
+
+  {
+    "rmagatti/auto-session",
+    event = "BufReadPre",
+    opts = {
+      log_level = "error",
+      auto_session_suppress_dirs = { "~", "~/*" },
+    },
+    cmd = { "RestoreSession" },
+    keys = {
+      { "<leader>ss", "<CMD>RestoreSession<CR>", desc = "Restore Session" },
+      { "<leader>sd", "<CMD>DeleteSession<CR>", desc = "Delete Current Session" },
+    },
+    config = true,
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    cmd = "ToggleTerm",
+    keys = {
+      { "<M-=>", "<CMD>ToggleTerm<CR>", desc = "Toggle terminal" },
+    },
+    opts = {
+      size = 15,
+      open_mapping = "<M-=>",
+      direction = "horizontal",
+      autochdir = true,
+      close_on_exit = true,
+      float_opts = {
+        border = "curved",
+      },
+    },
     config = true,
   },
 }
