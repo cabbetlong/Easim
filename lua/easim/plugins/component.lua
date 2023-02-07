@@ -54,7 +54,6 @@ return {
         },
       },
     },
-    config = true,
   },
 
   {
@@ -73,6 +72,5 @@ return {
         border = "curved",
       },
     },
-    config = true,
   },
 }

@@ -38,7 +38,6 @@ return {
         },
       },
     },
-    config = true,
   },
 
   {
@@ -56,7 +55,6 @@ return {
         return math.floor(vim.o.columns * 0.75)
       end,
     },
-    config = true,
   },
 
   {
@@ -71,7 +69,6 @@ return {
         cmdline_output_to_split = false,
       },
     },
-    config = true,
   },
 
   {
@@ -107,7 +104,6 @@ return {
       },
       -- extensions = {"nvim-tree", "aerial", "toggleterm", "quickfix"}
     },
-    config = true,
   },
 
   {

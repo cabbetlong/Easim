@@ -13,7 +13,6 @@ return {
     "kylechui/nvim-surround",
     event = "BufReadPost",
     opts = { keymaps = { visual = "<C-s>" } },
-    config = true,
   },
 
   {
@@ -30,7 +29,6 @@ return {
       show_trailing_blankline_indent = false,
       show_current_context = false,
     },
-    config = true,
   },
 
   {
@@ -73,22 +71,21 @@ return {
   {
     "rmagatti/auto-session",
     event = "BufReadPre",
-    opts = {
-      log_level = "error",
-      auto_session_suppress_dirs = { "~", "~/*" },
-    },
     cmd = { "RestoreSession" },
     keys = {
       { "<leader>ss", "<CMD>RestoreSession<CR>", desc = "Restore Session" },
       { "<leader>sd", "<CMD>DeleteSession<CR>", desc = "Delete Current Session" },
     },
-    config = true,
+    opts = {
+      log_level = "error",
+      auto_session_suppress_dirs = { "~", "~/*" },
+    },
   },
 
   {
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
-    config = {
+    opts = {
       signs = {
         add = { text = "" },
         change = { text = "" },
