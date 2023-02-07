@@ -45,4 +45,15 @@ return {
       vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
     end,
   },
+
+  {
+    "ggandor/leap.nvim",
+    event = "VeryLazy",
+  },
+
+  {
+    "nacro90/numb.nvim",
+    event = "VeryLazy",
+    config = true,
+  },
 }
