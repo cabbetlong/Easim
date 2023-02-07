@@ -86,21 +86,16 @@ return {
   },
 
   {
-    "akinsho/toggleterm.nvim",
-    cmd = "ToggleTerm",
-    keys = {
-      { "<M-=>", "<CMD>ToggleTerm<CR>", desc = "Toggle terminal" },
-    },
-    opts = {
-      size = 15,
-      open_mapping = "<M-=>",
-      direction = "horizontal",
-      autochdir = true,
-      close_on_exit = true,
-      float_opts = {
-        border = "curved",
+    "lewis6991/gitsigns.nvim",
+    event = "BufReadPre",
+    config = {
+      signs = {
+        add = { text = "" },
+        change = { text = "" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "~" },
       },
     },
-    config = true,
   },
 }
