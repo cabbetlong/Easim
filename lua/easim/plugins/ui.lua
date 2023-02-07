@@ -113,10 +113,8 @@ return {
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
-    config = function()
-      local dashboard = require("alpha.themes.dashboard")
-
-      local logo = [[
+    opts = {
+      logo = [[
  _______  _______  _______ _________ _______ 
 (  ____ \(  ___  )(  ____ \\__   __/(       )
 | (    \/| (   ) || (    \/   ) (   | () () |
@@ -125,8 +123,12 @@ return {
 | (      | (   ) |      ) |   | |   | |   | |
 | (____/\| )   ( |/\____) |___) (___| )   ( |
 (_______/|/     \|\_______)\_______/|/     \|
-      ]]
+      ]],
+    },
+    config = function(_, opts)
+      local dashboard = require("alpha.themes.dashboard")
 
+      local logo = opts.logo
       dashboard.section.header.val = vim.split(logo, "\n")
       dashboard.section.buttons.val = {
         dashboard.button("l", "鈴" .. " Lazy", ":Lazy<CR>"),
@@ -150,7 +152,7 @@ return {
 
       require("alpha").setup(dashboard.opts)
       vim.api.nvim_create_autocmd("User", {
-        pattern = "LazyVimStarted",
+        pattern = "EasimStarted",
         callback = function()
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
