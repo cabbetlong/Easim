@@ -79,13 +79,13 @@ return {
     cmd = { "Telescope" },
     -- stylua: ignore
     keys = {
-      { "<Leader>ff", require("telescope.builtin").find_files, desc = "Find files" },
-      { "<Leader>fg", require("telescope.builtin").live_grep, desc = "Find live grep" },
-      { "<Leader>fb", require("telescope.builtin").buffers, desc = "Find buffers" },
-      { "<Leader>fh", require("telescope.builtin").help_tags, desc = "Find help tags" },
-      { "<Leader>fs", require("telescope.builtin").symbols, desc = "Find symbols" },
-      { "<Leader>fc", require("telescope.builtin").commands, desc = "Find commands" },
-      { "<Leader>ft", require("telescope.builtin").colorscheme, desc = "Find colorscheme" },
+      { "<Leader>ff", "Telescope find_files", desc = "Find files" },
+      { "<Leader>fg", "Telescope live_grep", desc = "Find live grep" },
+      { "<Leader>fb", "Telescope buffers", desc = "Find buffers" },
+      { "<Leader>fh", "Telescope help_tags", desc = "Find help tags" },
+      { "<Leader>fs", "Telescope symbols", desc = "Find symbols" },
+      { "<Leader>fc", "Telescope commands", desc = "Find commands" },
+      { "<Leader>ft", "Telescope colorscheme", desc = "Find colorscheme" },
     },
     opts = {
       defaults = {
