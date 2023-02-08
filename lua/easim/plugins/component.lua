@@ -73,4 +73,17 @@ return {
       },
     },
   },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = { "Telescope" },
+    opts = {
+      defaults = {
+        prompt_prefix = " ",
+        selection_caret = " ",
+        sorting_strategy = "ascending",
+        layout_strategy = "horizontal",
+      },
+    },
+  },
 }

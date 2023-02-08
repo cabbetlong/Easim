@@ -144,7 +144,7 @@ return {
     keys = {
       { "<Leader>tt", "<CMD>TroubleToggle<CR>", desc = "Toggle toubles" },
     },
-    config = {
+    opts = {
       auto_open = false,
       use_diagnostic_signs = true, -- en
     },
@@ -156,7 +156,7 @@ return {
     keys = {
       { "<Leader>ta", "<CMD>AerialToggle<CR>", desc = "Toggle aerial" },
     },
-    config = {
+    opts = {
       attach_mode = "global",
       backends = { "lsp", "treesitter", "markdown" },
       show_guides = true,
