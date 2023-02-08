@@ -26,12 +26,12 @@ function M.setup(opts)
       pattern = "VeryLazy",
       callback = function()
         require("easim.config.autocmds")
-        require("easim.config.keymaps")()
+        require("easim.config.keymaps")
       end,
     })
   else
     require("easim.config.autocmds")
-    require("easim.config.keymaps")()
+    require("easim.config.keymaps")
   end
 
   require("lazy.core.util").try(function()
