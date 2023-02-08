@@ -5,6 +5,14 @@ local defaults = {
     colorscheme = "gruvbox",
     background = "dark",
   },
+  keys = {
+    all = true,
+    basic = true,
+    easy_motion = true,
+    easy_indent = true,
+    easy_window = true,
+    toggle = true,
+  },
 }
 
 local options
