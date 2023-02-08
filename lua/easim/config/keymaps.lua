@@ -19,6 +19,7 @@ if opts.all then
     map("n", "<leader>q", cmd("q"), { desc = "Quit" })
     map("n", "<leader>Q", cmd("q!"), { desc = "Quit forcely" })
     map("n", "<leader>w", cmd("w"), { desc = "Write buffer" })
+    map("n", "<esc>", cmd("noh"), { desc = "No highlight" })
     map({ "n", "v" }, "n", "nzz", { desc = "Next word" })
     map({ "n", "v" }, "N", "Nzz", { desc = "Next word" })
   end
