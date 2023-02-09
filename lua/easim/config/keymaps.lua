@@ -19,7 +19,7 @@ if opts.all then
     map("n", "<leader>q", cmd("q"), { desc = "Quit" })
     map("n", "<leader>Q", cmd("q!"), { desc = "Quit forcely" })
     map("n", "<leader>w", cmd("w"), { desc = "Write buffer" })
-    map("n", "<esc>", cmd("noh"), { desc = "No highlight" })
+    map("n", "<ESC>", cmd("noh") .. "<esc>", { desc = "No highlight" })
     map({ "n", "v" }, "n", "nzz", { desc = "Next word" })
     map({ "n", "v" }, "N", "Nzz", { desc = "Next word" })
     map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "Move to above line" })
@@ -32,6 +32,13 @@ if opts.all then
     map("", "L", "$", { desc = "Move to the end of the line easily" })
     map("", "J", "5j", { desc = "Move down 5 lines" })
     map("", "K", "5k", { desc = "Move up 5 lines" })
+
+    map("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+    map("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+    map("i", "<C-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+    map("i", "<C-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+    map("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+    map("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
   end
 
   if opts.easy_shift then
