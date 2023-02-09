@@ -26,12 +26,16 @@ function M.setup(opts)
       pattern = "VeryLazy",
       callback = function()
         require("easim.config.autocmds")
+        require("config.autocmds")
         require("easim.config.keymaps")
+        require("config.keymaps")
       end,
     })
   else
     require("easim.config.autocmds")
+    require("config.autocmds")
     require("easim.config.keymaps")
+    require("config.keymaps")
   end
 
   require("lazy.core.util").try(function()
@@ -56,6 +60,7 @@ function M.init()
   if not M.did_init then
     M.did_init = true
     require("easim.config.options")
+    require("config.options")
   end
 end
 
