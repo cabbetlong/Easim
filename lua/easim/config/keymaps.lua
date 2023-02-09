@@ -30,4 +30,25 @@ if opts.all then
     map("", "J", "5j", { desc = "Move down 5 lines" })
     map("", "K", "5k", { desc = "Move up 5 lines" })
   end
+
+  if opts.easy_shift then
+    map("n", "<", "<<", { desc = "Shift left" })
+    map("n", ">", ">>", { desc = "Shift right" })
+    map("v", "<", "<gv", { desc = "Shift left in visual mode" })
+    map("v", ">", ">gv", { desc = "Shift right in visual mode" })
+  end
+
+  if opts.easy_window then
+    map({ "i", "n", "v", "t" }, "<M-h>", "<C-\\><C-N><C-w>h", { desc = "Move cursor to window left of current one" })
+    map({ "i", "n", "v", "t" }, "<M-l>", "<C-\\><C-N><C-w>l", { desc = "Move cursor to window right of current one" })
+    map({ "i", "n", "v", "t" }, "<M-k>", "<C-\\><C-N><C-w>k", { desc = "Move cursor to window above current one" })
+    map({ "i", "n", "v", "t" }, "<M-j>", "<C-\\><C-N><C-w>j", { desc = "Move cursor to window below current one" })
+    -- stylua: ignore
+    map({ "i", "n", "v", "t" }, "<M-Right>", cmd("vertical resize+5"),
+      { desc = "Expand vertical size of current window" })
+    -- stylua: ignore
+    map({ "i", "n", "v", "t" }, "<M-Left>", cmd("vertical resize-5"), { desc = "Shrink vertical size of current window" })
+    map({ "i", "n", "v", "t" }, "<M-Up>", cmd("res +5"), { desc = "Expand horizental size of current window" })
+    map({ "i", "n", "v", "t" }, "<M-Down>", cmd("res -5"), { desc = "Shrink horizental size of current window" })
+  end
 end

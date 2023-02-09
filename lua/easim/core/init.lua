@@ -9,7 +9,7 @@ local defaults = {
     all = true,
     basic = true,
     easy_motion = true,
-    easy_indent = true,
+    easy_shift = true,
     easy_window = true,
     toggle = true,
   },
