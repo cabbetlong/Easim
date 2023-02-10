@@ -1,13 +1,5 @@
 local opts = require("easim.core").keys
-
-local function map(mode, lhs, rhs, opts)
-  local keys = require("lazy.core.handler").handlers.keys
-  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    vim.keymap.set(mode, lhs, rhs, opts)
-  end
-end
+local map = require("easim.core.util").map
 
 local function cmd(c)
   return "<cmd>" .. c .. "<cr>"
@@ -19,7 +11,7 @@ if opts.all then
     map("n", "<leader>q", cmd("q"), { desc = "Quit" })
     map("n", "<leader>Q", cmd("q!"), { desc = "Quit forcely" })
     map("n", "<leader>w", cmd("w"), { desc = "Write buffer" })
-    map("n", "<ESC>", cmd("noh") .. "<esc>", { desc = "No highlight" })
+    map("n", "<ESC>", cmd("noh") .. "<ESC>", { desc = "No highlight" })
     map({ "n", "v" }, "n", "nzz", { desc = "Next word" })
     map({ "n", "v" }, "N", "Nzz", { desc = "Next word" })
     map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "Move to above line" })
