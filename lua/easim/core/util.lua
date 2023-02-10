@@ -9,4 +9,8 @@ function M.map(mode, lhs, rhs, opts)
   end
 end
 
+function M.cmd(c)
+  return "<cmd>" .. c .. "<cr>"
+end
+
 return M
