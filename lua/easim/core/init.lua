@@ -66,8 +66,8 @@ M.did_init = false
 function M.init()
   if not M.did_init then
     M.did_init = true
-    require("easim.config.options")
-    require("config.options")
+    M.require("easim.config.options")
+    M.require("config.options")
   end
 end
 
