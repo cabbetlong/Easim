@@ -2,6 +2,8 @@ mkdir -vp ~/.config/nvim/
 mkdir -vp ~/.config/nvim/lua/plugins
 mkdir -vp ~/.config/nvim/lua/config
 
+echo 'return {}' > ~/.config/nvim/lua/plugins/init.lua
+
 echo '-- lazy.nvim to manage plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
