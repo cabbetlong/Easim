@@ -17,6 +17,13 @@ local defaults = {
 
 local options
 
+function M.require(pkg)
+  local _, ok = pcall(require, pkg)
+  if not ok then
+    vim.notify(pkg .. "loaded failed!", vim.log.levels.ERROR)
+  end
+end
+
 function M.setup(opts)
   options = vim.tbl_deep_extend("force", defaults, opts or {})
 
@@ -25,17 +32,17 @@ function M.setup(opts)
       group = vim.api.nvim_create_augroup("Easim", { clear = true }),
       pattern = "VeryLazy",
       callback = function()
-        require("easim.config.autocmds")
-        require("config.autocmds")
-        require("easim.config.keymaps")
-        require("config.keymaps")
+        M.require("easim.config.autocmds")
+        M.require("config.autocmds")
+        M.require("easim.config.keymaps")
+        M.require("config.keymaps")
       end,
     })
   else
-    require("easim.config.autocmds")
-    require("config.autocmds")
-    require("easim.config.keymaps")
-    require("config.keymaps")
+    M.require("easim.config.autocmds")
+    M.require("config.autocmds")
+    M.require("easim.config.keymaps")
+    M.require("config.keymaps")
   end
 
   require("lazy.core.util").try(function()
