@@ -11,14 +11,6 @@ return {
         opts = {
             auto_format_on_save = true,
             servers = {
-                -- clangd = {},
-                gopls = {},
-                pyright = {},
-                rust_analyzer = {},
-                yamlls = {},
-                vimls = {},
-                tsserver = {},
-
                 lua_ls = {
                     Lua = {
                         workspace = { checkThirdParty = false },
