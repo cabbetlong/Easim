@@ -22,24 +22,23 @@ return {
     },
     config = function(_, opts)
       local on_attach = function(_, bufnr)
-        -- Create a command `:Format` local to the LSP buffer
-        vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-          vim.lsp.buf.format()
-        end, { desc = "Format current buffer with LSP" })
+        local format = function()
+          local buf = vim.api.nvim_get_current_buf()
+          if vim.fn.getbufinfo("%")[1].changed == 0 then
+            return
+          end
+          local ft = vim.bo[buf].filetype
+          local have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
 
-        -- Format before save buffer
-        if opts.auto_format_on_save then
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            desc = "Auto format before save file",
-            buffer = bufnr,
-            callback = function()
-              if vim.fn.getbufinfo("%")[1].changed == 0 then
-                return
+          vim.lsp.buf.format(vim.tbl_deep_extend("force", {
+            bufnr = buf,
+            filter = function(client)
+              if have_nls then
+                return client.name == "null-ls"
               end
-
-              vim.lsp.buf.format()
+              return client.name ~= "null-ls"
             end,
-          })
+          }, {}))
         end
 
         local map = function(mode, lhs, rhs, options)
@@ -52,6 +51,21 @@ return {
           end
 
           vim.keymap.set(mode, lhs, rhs, options)
+        end
+        -- Create a command `:Format` local to the LSP buffer
+        vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+          format()
+        end, { desc = "Format current buffer with LSP" })
+
+        -- Format before save buffer
+        if opts.auto_format_on_save then
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            desc = "Auto format before save file",
+            buffer = bufnr,
+            callback = function()
+              format()
+            end,
+          })
         end
         map("n", "gd", require("telescope.builtin").lsp_definitions, { desc = "Goto definition" })
         map("n", "gr", "<cmd>Glance references<cr>", { desc = "Goto references" })
