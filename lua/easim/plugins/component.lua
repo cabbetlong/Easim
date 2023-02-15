@@ -12,6 +12,7 @@ return {
       },
       diagnostics = {
         enable = true,
+        show_on_dirs = true,
       },
       disable_netrw = true,
       hijack_netrw = true,
