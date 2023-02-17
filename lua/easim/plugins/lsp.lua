@@ -67,13 +67,13 @@ return {
             end,
           })
         end
-        map("n", "gd", require("telescope.builtin").lsp_definitions, { desc = "Goto definition" })
-        map("n", "gr", "<cmd>Glance references<cr>", { desc = "Goto references" })
-        map("n", "gi", "<cmd>Glance implementations<cr>", { desc = "Goto implementations" })
-        map("n", "gn", vim.lsp.buf.rename, { desc = "LSP rename" })
-        map("n", "gca", vim.lsp.buf.code_action, { desc = "LSP code action" })
-        map("n", "gk", vim.lsp.buf.hover, { desc = "LSP code action" })
-        map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature documentation" })
+        map("n", "gd", require("telescope.builtin").lsp_definitions, { desc = "LSP: Goto definition" })
+        map("n", "gr", "<cmd>Glance references<cr>", { desc = "LSP: Goto references" })
+        map("n", "gi", "<cmd>Glance implementations<cr>", { desc = "LSP: Goto implementations" })
+        map("n", "gn", vim.lsp.buf.rename, { desc = "LSP: rename" })
+        map("n", "gca", vim.lsp.buf.code_action, { desc = "LSP: code action" })
+        map("n", "gk", vim.lsp.buf.hover, { desc = "LSP: code action" })
+        map("n", "gK", vim.lsp.buf.signature_help, { desc = "LSP: Signature documentation" })
 
         map("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto previous diagnostic" })
         map("n", "]d", vim.diagnostic.goto_next, { desc = "Goto next diagnostic" })

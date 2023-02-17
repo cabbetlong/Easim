@@ -87,6 +87,7 @@ return {
       { "<Leader>fs", "<CMD>Telescope symbols<CR>", desc = "Find symbols" },
       { "<Leader>fc", "<CMD>Telescope commands<CR>", desc = "Find commands" },
       { "<Leader>ft", "<CMD>Telescope colorscheme<CR>", desc = "Find colorscheme" },
+      { "<Leader>fk", "<CMD>Telescope keymaps<CR>", desc = "Find keymaps" },
     },
     opts = {
       defaults = {
