@@ -74,9 +74,6 @@ return {
         map("n", "gca", vim.lsp.buf.code_action, { desc = "LSP: code action" })
         map("n", "gk", vim.lsp.buf.hover, { desc = "LSP: code action" })
         map("n", "gK", vim.lsp.buf.signature_help, { desc = "LSP: Signature documentation" })
-
-        map("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto previous diagnostic" })
-        map("n", "]d", vim.diagnostic.goto_next, { desc = "Goto next diagnostic" })
       end
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())

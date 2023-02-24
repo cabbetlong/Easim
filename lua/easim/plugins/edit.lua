@@ -94,4 +94,17 @@ return {
       },
     },
   },
+
+  {
+    "echasnovski/mini.bracketed",
+    event = "VeryLazy",
+  },
+
+  {
+    "echasnovski/mini.bracketed",
+    event = "VeryLazy",
+    config = function()
+      require("mini.bracketed").setup()
+    end,
+  },
 }
