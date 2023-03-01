@@ -4,7 +4,6 @@ vim.g.maplocalleader = " "
 vim.opt.mouse = "a"
 
 vim.opt.laststatus = 3
-
 vim.opt.fileencoding = "utf-8"
 vim.opt.swapfile = false
 vim.opt.wrap = false

@@ -4,6 +4,12 @@ local defaults = {
   theme = {
     colorscheme = "gruvbox",
     background = "dark",
+    dynamic_theme = false,
+    dynamic = {
+      { from = "07:00", to = "19:00", background = "light", colorscheme = "gruvbox" },
+      { from = "19:00", to = "24:00", background = "dark", colorscheme = "gruvbox" },
+      { from = "00:00", to = "07:00", background = "dark", colorscheme = "gruvbox" },
+    },
   },
   keys = {
     all = true,
@@ -49,8 +55,23 @@ function M.setup(opts)
     if type(M.theme) == "function" then
       M.theme()
     else
-      vim.opt.background = M.theme.background
-      vim.cmd.colorscheme(M.theme.colorscheme)
+      if M.theme.dynamic_theme == true then
+        local now = os.date("%H:%M")
+        local between = function(from, to)
+          return now >= from and now < to
+        end
+
+        for _, value in ipairs(M.theme.dynamic) do
+          if between(value.from, value.to) then
+            vim.opt.background = value.background
+            vim.cmd.colorscheme(value.colorscheme)
+            return
+          end
+        end
+      else
+        vim.opt.background = M.theme.background
+        vim.cmd.colorscheme(M.theme.colorscheme)
+      end
     end
   end, {
     msg = "Could not load your colorscheme",
