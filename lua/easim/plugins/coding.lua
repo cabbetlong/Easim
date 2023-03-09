@@ -72,7 +72,7 @@ return {
         end,
       },
     },
-    config = function()
+    opts = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
 
@@ -81,7 +81,7 @@ return {
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
 
-      cmp.setup({
+      return {
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -119,7 +119,7 @@ return {
           { name = "nvim_lua" },
           { name = "path" },
         },
-      })
+      }
     end,
   },
 
