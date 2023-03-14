@@ -4,7 +4,7 @@ return {
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     keys = {
       -- stylua: ignore
-      { "<leader>e", function() require("nvim-tree").toggle() end, desc = "Toggle NvimTree" },
+      { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
     },
     opts = {
       filters = {
