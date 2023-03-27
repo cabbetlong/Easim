@@ -8,6 +8,8 @@ echo '-- lazy.nvim to manage plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
+  vim.pretty_print("Cloning lazy.nvim\nPlease wait...\n")
+
   vim.fn.system({
     "git",
     "clone",
