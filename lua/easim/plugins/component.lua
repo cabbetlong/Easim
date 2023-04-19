@@ -6,55 +6,67 @@ return {
       -- stylua: ignore
       { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
     },
-    opts = {
-      filters = {
-        dotfiles = true,
-      },
-      diagnostics = {
-        enable = true,
-        show_on_dirs = true,
-      },
-      disable_netrw = true,
-      hijack_netrw = true,
-      hijack_cursor = true,
-      hijack_unnamed_buffer_when_opening = false,
-      update_cwd = true,
-      update_focused_file = {
-        enable = true,
-        update_cwd = false,
-      },
-      view = {
-        adaptive_size = true,
-        side = "left",
-        width = 30,
-        hide_root_folder = true,
-        mappings = {
-          list = {
-            { key = { "<CR>", "l", "<2-LeftMouse>" }, action = "edit" },
-            { key = { "<BS>", "h" }, action = "close_node" },
+
+    --   Info  14时13分06秒 notify.info NvimTree view.mappings.list has been deprecated in favour of on_attach. Please run :NvimTreeGenerateOnAttach and visit https://github.com/nvim-tree/nvim-tree.lua/wiki/Migrating-To-on_attach
+
+    opts = function()
+      local function on_attach(bufnr)
+        local api = require("nvim-tree.api")
+
+        local function opts(desc)
+          return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+        end
+
+        api.config.mappings.default_on_attach(bufnr)
+        vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
+        vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
+      end
+
+      return {
+        on_attach = on_attach,
+        filters = {
+          dotfiles = true,
+        },
+        diagnostics = {
+          enable = true,
+          show_on_dirs = true,
+        },
+        disable_netrw = true,
+        hijack_netrw = true,
+        hijack_cursor = true,
+        hijack_unnamed_buffer_when_opening = false,
+        update_cwd = true,
+        update_focused_file = {
+          enable = true,
+          update_cwd = false,
+        },
+        view = {
+          adaptive_size = true,
+          side = "left",
+          width = 30,
+        },
+        git = {
+          enable = true,
+          ignore = true,
+        },
+        filesystem_watchers = {
+          enable = true,
+        },
+        actions = {
+          open_file = {
+            resize_window = true,
           },
         },
-      },
-      git = {
-        enable = true,
-        ignore = true,
-      },
-      filesystem_watchers = {
-        enable = true,
-      },
-      actions = {
-        open_file = {
-          resize_window = true,
+        renderer = {
+          highlight_git = false,
+          highlight_opened_files = "none",
+          root_folder_label = false,
+          indent_markers = {
+            enable = false,
+          },
         },
-      },
-      renderer = {
-        highlight_git = false,
-        highlight_opened_files = "none",
-        indent_markers = {
-          enable = false,
-        },
-      },
-    },
+      }
+    end,
   },
 
   {
