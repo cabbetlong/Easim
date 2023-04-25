@@ -15,6 +15,7 @@ if opts.all then
     map({ n, v }, "N", "Nzz", { desc = "Next word" })
     map(n, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "Move to above line" })
     map(n, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, desc = "Move to below line" })
+    map(v, "p", "pgvy", { desc = "Paste over visual selection" })
   end
 
   if opts.easy_motion then
