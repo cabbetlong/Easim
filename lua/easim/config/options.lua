@@ -38,3 +38,4 @@ vim.opt.fillchars:append("eob: ") -- remove end of buffer char (~)
 vim.o.completeopt = "menuone,noselect"
 vim.o.sessionoptions = "curdir,folds,help,winsize,winpos,localoptions"
 vim.opt.confirm = true
+vim.opt.clipboard = "unnamedplus"

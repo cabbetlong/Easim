@@ -10,6 +10,7 @@ if opts.all then
     map(n, "<leader>Q", cmd("q!"), { desc = "Quit forcely" })
     map(n, "<leader>w", cmd("w"), { desc = "Write buffer" })
     map(n, "<ESC>", cmd("noh") .. "<ESC>", { desc = "No highlight" })
+    map(t, "<ESC>", "<C-\\><C-N>", { desc = "Exit termianl mode and enter normal mode" })
     map({ n, v }, "n", "nzz", { desc = "Next word" })
     map({ n, v }, "N", "Nzz", { desc = "Next word" })
     map(n, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "Move to above line" })
