@@ -85,10 +85,10 @@ return {
   {
     "rmagatti/auto-session",
     event = "BufReadPre",
-    cmd = { "RestoreSession" },
+    cmd = { "SessionRestore" },
     keys = {
-      { "<leader>ss", "<CMD>RestoreSession<CR>", desc = "Restore Session" },
-      { "<leader>sd", "<CMD>DeleteSession<CR>", desc = "Delete Current Session" },
+      { "<leader>ss", "<CMD>SessionRestore<CR>", desc = "Restore Session" },
+      { "<leader>sd", "<CMD>SessionDelete<CR>", desc = "Delete Current Session" },
     },
     opts = {
       log_level = "error",
