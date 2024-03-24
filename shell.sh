@@ -2,6 +2,7 @@ mkdir -vp ~/.config/nvim/
 mkdir -vp ~/.config/nvim/lua/plugins
 mkdir -vp ~/.config/nvim/lua/config
 
+# generate init.lua
 echo 'return {}' > ~/.config/nvim/lua/plugins/init.lua
 
 echo '-- lazy.nvim to manage plugins
